@@ -1,0 +1,131 @@
+{
+    "version": 1,
+    "name": "PlayerAction",
+    "maps": [
+        {
+            "name": "Select",
+            "id": "6c18827e-9d55-437a-981e-f2d499b0454e",
+            "actions": [
+                {
+                    "name": "Confirn",
+                    "type": "Button",
+                    "id": "4cb27cdf-f335-4dd5-a3a8-a643d97c3593",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "595281a3-d4b7-4862-9a24-fe052324eab6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select",
+                    "type": "Value",
+                    "id": "ac80fea6-053f-4fa1-b626-19e92d8d2f9b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5299010b-08bc-4a0f-a24c-a2cd147c0d8d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0800d09-30db-463d-832a-f42b8b3ec9a3",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a35f69b0-c7c9-4232-8ddb-2a13799edb27",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Pilot",
+            "id": "70310850-692a-48d4-9ad5-68910e9f6da3",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "366539fd-5eb3-4e6d-8f71-4f207c34fb13",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a9874b80-f90b-42d3-8ef8-42e9c5530a2e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Gunner",
+            "id": "61aa4279-136b-4d92-81ac-99c0b67a7486",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "53a551d5-f74d-45ba-87ea-b513fe9ec256",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a1308a57-0583-4ff2-b21a-2cae93d70d14",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
