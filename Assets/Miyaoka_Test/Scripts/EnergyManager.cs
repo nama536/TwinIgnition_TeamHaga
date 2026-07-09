@@ -3,65 +3,57 @@ using UnityEngine.UI;
 
 public class EnergyManager : MonoBehaviour
 {
-    [SerializeField] private float _recoveryEnergyRate = 3f;
+    // エネルギー回復速度
+    [SerializeField] private float _recoveryRate = 3f;
     
-    [SerializeField] private Slider _energySlider;
+    // エネルギーのUIImage
+    [SerializeField] private Image _energyImage;
 
     private float _currentEnergy;
-    private const float _maxEnergy = 100f;
+    private const float MaxEnergy = 100f;
 
     void Start()
     {
-        // ゲーム開始時はエネルギーを満タンにする
-        _currentEnergy = _maxEnergy;
+        _currentEnergy = MaxEnergy;
         UpdateEnergyUI();
     }
 
     void Update()
     {
-        // 毎秒指定された値ずつ自動回復
-        if (_currentEnergy < _maxEnergy)
+        if (_currentEnergy < MaxEnergy)
         {
-            _currentEnergy += _recoveryEnergyRate * Time.deltaTime;
-            
-            // 最大値を超えないように制限
-            if (_currentEnergy > _maxEnergy)
+            _currentEnergy += _recoveryRate * Time.deltaTime;
+            if (_currentEnergy > MaxEnergy)
             {
-                _currentEnergy = _maxEnergy;
+                _currentEnergy = MaxEnergy;
             }
-            
             UpdateEnergyUI();
         }
     }
 
-    /// <summary>
-    /// プレイヤー（砲撃士）が撃つときに呼び出す関数
-    /// </summary>
-    /// <returns>エネルギーが足りていて消費に成功した場合はtrue</returns>
     public bool ConsumeEnergyForShoot()
     {
-        const float shootCost = 2f;
+        const float _shootCost = 2f;
 
-        if (_currentEnergy >= shootCost)
+        if (_currentEnergy >= _shootCost)
         {
-            _currentEnergy -= shootCost;
+            _currentEnergy -= _shootCost;
             UpdateEnergyUI();
-            return true; // 射撃成功
+            return true; 
         }
 
         Debug.Log("エネルギーが足りません！");
-        return false; // エネルギー不足で射撃不可
+        return false; 
     }
 
     /// <summary>
-    /// UIのゲージを更新する
+    /// UIのImageを更新する
     /// </summary>
     private void UpdateEnergyUI()
     {
-        if (_energySlider != null)
+        if (_energyImage != null)
         {
-            // SliderのMax Valueを100に設定しておくか、ここで同期させてください
-            _energySlider.value = _currentEnergy;
+            _energyImage.fillAmount = _currentEnergy / MaxEnergy;
         }
     }
 }
