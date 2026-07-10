@@ -2,20 +2,29 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [Header("障害物")]
-    public GameObject BossPrefab;
-    [Header("次の障害物がスポンするまでの間隔")] 
-    public float spawnTime = 1.0f; 
-    public float spawnY = 6f;   // 画面の上端（生成位置）
-    public float spawnX = 2.5f; // 画面真ん中（生成位置）
+    [Header("ボス設定")]
+    [SerializeField] private GameObject bossPrefab;
 
-    private float timer;
+    [Header("出現時間（秒）")]
+    [SerializeField] private float spawnTime = 30f;
+
+    [Header("出現位置")]
+    [SerializeField] private Vector2 spawnPosition = new Vector2(0f, 4f);
+
+    [Header("障害物マネージャー")]
+    [SerializeField] private ObstacleManager obstacleManager;
+
+    private float timer = 0f;
+    private bool bossSpawned = false;
 
     void Update()
     {
+        // 既にボスを出していたら何もしない
+        if (bossSpawned)
+            return;
+
         timer += Time.deltaTime;
 
-        // インスペクターで設定した時間を超えたら生成
         if (timer >= spawnTime)
         {
             SpawnBoss();
@@ -24,9 +33,15 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnBoss()
     {
-        Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0);
+        // ボス生成
+        Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
 
-        // 障害物を生成
-        GameObject newBoss = Instantiate(BossPrefab, spawnPosition, Quaternion.identity);
+        bossSpawned = true;
+
+        // 障害物の生成を停止
+        if (obstacleManager != null)
+        {
+            obstacleManager.enabled = false;
+        }
     }
 }
