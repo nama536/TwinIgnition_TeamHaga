@@ -256,7 +256,7 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!1 &1343511051
+--- !u!1 &1410381122
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,22 +264,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1343511053}
-  - component: {fileID: 1343511052}
+  - component: {fileID: 1410381125}
+  - component: {fileID: 1410381124}
+  - component: {fileID: 1410381123}
   m_Layer: 0
-  m_Name: ObstacleManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1343511052
+--- !u!114 &1410381123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1343511051}
+  m_GameObject: {fileID: 1410381122}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d254f4be769dd884fbff770ad2db9627, type: 3}
@@ -291,13 +292,29 @@ MonoBehaviour:
   maxX: 8
   spawnY: 6
   destroyY: -6
---- !u!4 &1343511053
+--- !u!114 &1410381124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410381122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddab2bdae4131de488c8b9c88997c2a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
+  bossPrefab: {fileID: 2850568322464814056, guid: 0e989462943ebea459d94f47db9ccbd6, type: 3}
+  spawnTime: 30
+  spawnPosition: {x: 0, y: 4}
+  obstacleManager: {fileID: 1410381123}
+--- !u!4 &1410381125
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1343511051}
+  m_GameObject: {fileID: 1410381122}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -311,4 +328,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 582276938}
-  - {fileID: 1343511053}
+  - {fileID: 1410381125}
