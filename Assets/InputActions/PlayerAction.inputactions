@@ -75,24 +75,24 @@
             "id": "70310850-692a-48d4-9ad5-68910e9f6da3",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
+                    "name": "Move",
+                    "type": "Value",
                     "id": "366539fd-5eb3-4e6d-8f71-4f207c34fb13",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "a9874b80-f90b-42d3-8ef8-42e9c5530a2e",
-                    "path": "",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -103,24 +103,24 @@
             "id": "61aa4279-136b-4d92-81ac-99c0b67a7486",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
+                    "name": "Rotate",
+                    "type": "Value",
                     "id": "53a551d5-f74d-45ba-87ea-b513fe9ec256",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "a1308a57-0583-4ff2-b21a-2cae93d70d14",
-                    "path": "",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
