@@ -6,8 +6,11 @@ public class StageProgressBar : MonoBehaviour
     public float speed = 0.1f; // Speed of the progress bar
     [SerializeField] private GameObject rocket;
     [SerializeField] private GameObject target;
-    private bool arrived = false;
-    private bool ifBoss = false;
+    public bool Arrived = false;
+    private bool doBoss = false; // ボスに到達済みか
+
+    [SerializeField] private EnemyManager enemyManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,7 +20,7 @@ public class StageProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (arrived) return;
+        if (Arrived) return;
 
         rocket.transform.position = Vector3.MoveTowards(
             rocket.transform.position,
@@ -26,14 +29,17 @@ public class StageProgressBar : MonoBehaviour
 
         if (target.transform.position.y - rocket.transform.position.y < 0.01f)
         {
-            arrived = true;
-            Debug.Log("�����I");
+            Arrived = true;
+            Debug.Log("�����I");
         }
 
-        if (!ifBoss && target.transform.position.y - rocket.transform.position.y < 1f)
+        if (target.transform.position.y - rocket.transform.position.y < 1f && doBoss == false)
         {
-            arrived = true;
+            Arrived = true;
+            doBoss = true;
             Debug.Log("Boss");
+            // ボス召喚
+            enemyManager.SpawnBoss();
         }
     }
 }

@@ -10,6 +10,8 @@ public class BossHealth : MonoBehaviour
     [Header("撃破エフェクト（任意）")]
     [SerializeField] private GameObject destroyEffect;
 
+    [HideInInspector] public EnemyManager EnemyManager;
+
     void Start()
     {
         currentHp = maxHp;
@@ -42,6 +44,7 @@ public class BossHealth : MonoBehaviour
         }
 
         // ボスを破壊
+        EnemyManager.BossClear();
         Destroy(gameObject);
     }
 

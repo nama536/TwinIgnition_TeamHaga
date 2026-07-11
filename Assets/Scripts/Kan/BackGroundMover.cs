@@ -10,18 +10,26 @@ public class BackGroundMover : MonoBehaviour
 
     [SerializeField]
     private Vector2 m_offsetSpeed;
-
+    public Vector2 m_NowSpeed;
     private Vector2 m_Reset = new Vector2(0,0);
 
     private Material m_copiedMaterial;
+
+    private BossHealth bossHealth;
 
     private void Start()
     {
         var image = GetComponent<Image>();
         m_copiedMaterial = image.material;
+        m_NowSpeed = m_offsetSpeed;
 
-        // ƒ}ƒeƒŠƒAƒ‹‚ªnull‚¾‚Á‚½‚ç—áŠO‚ªo‚Ü‚·B
+        // ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½nullï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½oï¿½Ü‚ï¿½ï¿½B
         Assert.IsNotNull(m_copiedMaterial);
+    }
+
+    public void Restart()
+    {
+        m_NowSpeed = m_offsetSpeed;
     }
 
     private void Update()
@@ -31,16 +39,16 @@ public class BackGroundMover : MonoBehaviour
             return;
         }
 
-        // x‚Æy‚Ì’l‚ª0 ` 1‚ÅƒŠƒs[ƒg‚·‚é‚æ‚¤‚É‚·‚é
-        var x = Mathf.Repeat(Time.time * m_offsetSpeed.x, k_maxLength);
-        var y = Mathf.Repeat(Time.time * m_offsetSpeed.y, k_maxLength);
+        // xï¿½ï¿½yï¿½Ì’lï¿½ï¿½0 ï¿½` 1ï¿½Åƒï¿½ï¿½sï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
+        var x = Mathf.Repeat(Time.time * m_NowSpeed.x, k_maxLength);
+        var y = Mathf.Repeat(Time.time * m_NowSpeed.y, k_maxLength);
         var offset = new Vector2(x, y);
         m_copiedMaterial.SetTextureOffset(k_propName, offset);
     }
 
     private void OnDestroy()
     {
-        // ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg”j‰ó‚Éƒ}ƒeƒŠƒAƒ‹‚ÌƒRƒs[‚àÁ‚µ‚Ä‚¨‚­
+        // ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½jï¿½ó‚Éƒ}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌƒRï¿½sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
         m_copiedMaterial.SetTextureOffset(k_propName, m_Reset);
         Destroy(m_copiedMaterial);
         m_copiedMaterial = null;
