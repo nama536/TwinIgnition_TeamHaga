@@ -11,37 +11,58 @@ public class RocketShip : MonoBehaviour
         _inputs = FindObjectsByType<RoleSelectInput>(FindObjectsSortMode.None);
         for (uint i = 0; i < _inputs.Length; i++){
             if (_inputs[i].ThisRoleSelect == RoleSelectManager.RoleSelect.Pilot){
-                PlayerInput _pilot = _inputs[i].GetComponent<PlayerInput>();
+                _pilot = _inputs[i].gameObject.GetComponent<PlayerInput>();
             }
             else if(_inputs[i].ThisRoleSelect == RoleSelectManager.RoleSelect.Gunner){
-                PlayerInput _gunner = _inputs[i].GetComponent<PlayerInput>();
+                _gunner = _inputs[i].gameObject.GetComponent<PlayerInput>();
             }
         }
         if (_pilot == null || _gunner == null){
             Debug.LogError("Couldn't find PlayerInputs!");
         }
         else{
-            _pilot.onActionTriggered += HandlePilotInput;
-            _gunner.onActionTriggered += HandleGunnerInput;
+            BindPilotControls();
+            BindGunnerControls();
+        }
+
+    }
+
+    private void BindPilotControls(){
+        for (int i = 0; i < _pilot.actionEvents.Count; i++){
+            if (_pilot.actionEvents[i].actionName == "Move"){
+                _pilot.actionEvents[i].AddListener(OnPilotMove);
+            }
+            if (_pilot.actionEvents[i].actionName == "Boost"){
+                _pilot.actionEvents[i].AddListener(OnPilotBoost);
+            }
         }
     }
 
-    private void OnEnable(){
-        if (_pilot != null && _gunner != null){
-            _pilot.onActionTriggered += HandlePilotInput;
-            _gunner.onActionTriggered += HandleGunnerInput;
+    private void BindGunnerControls(){
+        for (int i = 0; i < _gunner.actionEvents.Count; i++){
+            if (_gunner.actionEvents[i].actionName == "Aim"){
+                _gunner.actionEvents[i].AddListener(OnGunnerAim);
+            }
+            if (_gunner.actionEvents[i].actionName == "Shoot"){
+                _gunner.actionEvents[i].AddListener(OnGunnerShoot);
+            }
         }
     }
 
-    private void OnDisable(){
-        if (_pilot != null && _gunner != null){
-            _pilot.onActionTriggered -= HandlePilotInput;
-            _gunner.onActionTriggered -= HandleGunnerInput;
-        }
+    void OnPilotMove(InputAction.CallbackContext context){
+        Debug.Log("Detected Pilot Move!");
     }
 
-    void HandlePilotInput(InputAction.CallbackContext context){
-        Debug.Log("Detected Pilot Input!");
+    void OnPilotBoost(InputAction.CallbackContext context){
+        Debug.Log("Detected Pilot Boost!");
+    }
+
+    void OnGunnerAim(InputAction.CallbackContext context){
+        Debug.Log("Detected Gunner Aiming!");
+    }
+
+    void OnGunnerShoot(InputAction.CallbackContext context){
+        Debug.Log("FIRE!");
     }
 
     void HandleGunnerInput(InputAction.CallbackContext context){
