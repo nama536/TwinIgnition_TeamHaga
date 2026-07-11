@@ -124,8 +124,6 @@ public class RoleSelectManager : MonoBehaviour
             Debug.Log(roleSelectInput.ThisController + roleSelectInput.PlayerInput.currentActionMap.name);
         }
         Debug.Log("ゲーム開始");
-        //宇宙船の初期化する
-        _rocketShip.InitializeInputs();
         this.gameObject.SetActive(false);
     }
 }
