@@ -7,6 +7,9 @@ public class StageProgressBar : MonoBehaviour
     [SerializeField] private GameObject rocket;
     [SerializeField] private GameObject target;
     private bool arrived = false;
+
+    [SerializeField] private EnemyManager enemyManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,13 +29,15 @@ public class StageProgressBar : MonoBehaviour
         if (target.transform.position.y - rocket.transform.position.y < 0.01f)
         {
             arrived = true;
-            Debug.Log("“ž’…I");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½I");
         }
 
         if (target.transform.position.y - rocket.transform.position.y < 1f)
         {
             arrived = true;
             Debug.Log("Boss");
+            // ãƒœã‚¹å¬å–š
+            enemyManager.SpawnBoss();
         }
     }
 }
