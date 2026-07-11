@@ -13,6 +13,7 @@ public class RoleSelectManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] texts;
     //　準備完了表示
     [SerializeField] GameObject[] _doReadys;
+    [SerializeField] RocketShip _rocketShip;
 
     //　どの役職を選択したか
     public enum RoleSelect
@@ -123,6 +124,8 @@ public class RoleSelectManager : MonoBehaviour
             Debug.Log(roleSelectInput.ThisController + roleSelectInput.PlayerInput.currentActionMap.name);
         }
         Debug.Log("ゲーム開始");
+        //宇宙船の初期化する
+        _rocketShip.InitializeInputs();
         this.gameObject.SetActive(false);
     }
 }

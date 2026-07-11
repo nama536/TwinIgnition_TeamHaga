@@ -7,7 +7,7 @@ public class RocketShip : MonoBehaviour
     private PlayerInput _pilot;
     private PlayerInput _gunner;
 
-    private void InitializeInputs(){
+    public void InitializeInputs(){
         _inputs = FindObjectsByType<RoleSelectInput>(FindObjectsSortMode.None);
         for (uint i = 0; i < _inputs.Length; i++){
             if (_inputs[i].ThisRoleSelect == RoleSelectManager.RoleSelect.Pilot){
@@ -46,12 +46,6 @@ public class RocketShip : MonoBehaviour
 
     void HandleGunnerInput(InputAction.CallbackContext context){
         Debug.Log("Detected Gunner Input!");
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        InitializeInputs();
     }
 
     // Update is called once per frame
