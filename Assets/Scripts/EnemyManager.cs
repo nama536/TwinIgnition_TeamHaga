@@ -11,8 +11,10 @@ public class EnemyManager : MonoBehaviour
     [Header("出現位置")]
     [SerializeField] private Vector2 spawnPosition = new Vector2(0f, 4f);
 
-    [Header("障害物マネージャー")]
+    [Header("マネージャー")]
     [SerializeField] private ObstacleManager obstacleManager;
+    [SerializeField] private StageProgressBar stageProgressBar;
+    [SerializeField] private BackGroundMover backGroundMover;
 
     // private float timer = 0f;
     // private bool bossSpawned = false;
@@ -34,7 +36,11 @@ public class EnemyManager : MonoBehaviour
     public void SpawnBoss()
     {
         // ボス生成
-        Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
+        GameObject boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
+        // 設定
+        BossHealth bh = boss.GetComponent<BossHealth>();
+        bh.EnemyManager = this;
+        backGroundMover.m_NowSpeed = Vector2.zero;
 
         // bossSpawned = true;
 
@@ -43,5 +49,12 @@ public class EnemyManager : MonoBehaviour
         {
             obstacleManager.enabled = false;
         }
+    }
+
+    // ボス撃破
+    public void BossClear()
+    {
+        stageProgressBar.Arrived = false;
+        backGroundMover.Restart();
     }
 }

@@ -564,6 +564,8 @@ MonoBehaviour:
   speed: 0.1
   rocket: {fileID: 780601143}
   target: {fileID: 982351884}
+  Arrived: 0
+  enemyManager: {fileID: 1997579345}
 --- !u!1 &780601143
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,6 +998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackGroundMover
   m_offsetSpeed: {x: 0, y: 0.1}
+  m_NowSpeed: {x: 0, y: 0}
 --- !u!1 &1934418962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,9 +1260,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   bossPrefab: {fileID: 2850568322464814056, guid: 0e989462943ebea459d94f47db9ccbd6, type: 3}
-  spawnTime: 30
   spawnPosition: {x: 0, y: 4}
   obstacleManager: {fileID: 1997579344}
+  stageProgressBar: {fileID: 754765382}
+  backGroundMover: {fileID: 1588664846}
 --- !u!4 &1997579346
 Transform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class BackGroundMover : MonoBehaviour
 
     [SerializeField]
     private Vector2 m_offsetSpeed;
+    public Vector2 m_NowSpeed;
     private Vector2 m_Reset = new Vector2(0,0);
 
     private Material m_copiedMaterial;
@@ -20,9 +21,15 @@ public class BackGroundMover : MonoBehaviour
     {
         var image = GetComponent<Image>();
         m_copiedMaterial = image.material;
+        m_NowSpeed = m_offsetSpeed;
 
         // �}�e���A����null���������O���o�܂��B
         Assert.IsNotNull(m_copiedMaterial);
+    }
+
+    public void Restart()
+    {
+        m_NowSpeed = m_offsetSpeed;
     }
 
     private void Update()
@@ -33,8 +40,8 @@ public class BackGroundMover : MonoBehaviour
         }
 
         // x��y�̒l��0 �` 1�Ń��s�[�g����悤�ɂ���
-        var x = Mathf.Repeat(Time.time * m_offsetSpeed.x, k_maxLength);
-        var y = Mathf.Repeat(Time.time * m_offsetSpeed.y, k_maxLength);
+        var x = Mathf.Repeat(Time.time * m_NowSpeed.x, k_maxLength);
+        var y = Mathf.Repeat(Time.time * m_NowSpeed.y, k_maxLength);
         var offset = new Vector2(x, y);
         m_copiedMaterial.SetTextureOffset(k_propName, offset);
     }
