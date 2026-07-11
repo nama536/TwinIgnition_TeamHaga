@@ -29,10 +29,10 @@ public class RocketShip : MonoBehaviour
 
     private void BindPilotControls(){
         for (int i = 0; i < _pilot.actionEvents.Count; i++){
-            if (_pilot.actionEvents[i].actionName == "Move"){
+            if (_pilot.actionEvents[i].actionName == "Pilot/Move"){
                 _pilot.actionEvents[i].AddListener(OnPilotMove);
             }
-            if (_pilot.actionEvents[i].actionName == "Boost"){
+            if (_pilot.actionEvents[i].actionName == "Pilot/Boost"){
                 _pilot.actionEvents[i].AddListener(OnPilotBoost);
             }
         }
@@ -40,10 +40,10 @@ public class RocketShip : MonoBehaviour
 
     private void BindGunnerControls(){
         for (int i = 0; i < _gunner.actionEvents.Count; i++){
-            if (_gunner.actionEvents[i].actionName == "Aim"){
+            if (_gunner.actionEvents[i].actionName == "Gunner/Aim"){
                 _gunner.actionEvents[i].AddListener(OnGunnerAim);
             }
-            if (_gunner.actionEvents[i].actionName == "Shoot"){
+            if (_gunner.actionEvents[i].actionName == "Gunner/Shoot"){
                 _gunner.actionEvents[i].AddListener(OnGunnerShoot);
             }
         }
