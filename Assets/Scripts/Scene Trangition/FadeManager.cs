@@ -66,6 +66,15 @@ public class FadeManager : MonoBehaviour
     }
 
 
+    // UnityのButtonコンポーネントから直接呼ぶためのラッパーメソッド
+    public void TriggerFadeAndLoadScene(string sceneName)
+    {
+        // UniTaskVoidのメソッドを安全に呼び出す（Forgetで警告を消す）
+        FadeAndLoadScene(sceneName).Forget();
+    }
+
+
+
     public async UniTaskVoid FadeAndLoadScene(string sceneName)
     {
         if (_isLoading) return;
