@@ -20,6 +20,7 @@ public class StageProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (MaingameManager.Instance.IsGaming == false) return;
         if (Arrived) return;
 
         rocket.transform.position = Vector3.MoveTowards(

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class RoleSelectManager : MonoBehaviour
 {
@@ -9,10 +10,17 @@ public class RoleSelectManager : MonoBehaviour
     [SerializeField] InputAction _joinButton;
     [SerializeField] InputAction _joinKeyboardWASD;
     [SerializeField] InputAction _joinKeyboardArrowKeys;
+    //　参加待ちテキスト
+    [SerializeField] GameObject[] _waitTexts;
     //　キャラ選択用プレイヤーインプットオブジェクト（プレハブ）
     [SerializeField] GameObject _playerInputObject;
     //　何を選んでいるか表示
-    [SerializeField] TextMeshProUGUI[] texts;
+    [SerializeField] Image[] _roleTexts;
+    //　役職文字画像
+    [SerializeField] Sprite _pilotText, _gunnerText;
+    //　矢印　0=p1左 1=p1右 2=p2左 3=p2右
+    [SerializeField] Image[] _rArrows;
+    [SerializeField] Image[] _lArrows;
     //　準備完了表示
     [SerializeField] GameObject[] _doReadys;
     [SerializeField] GameObject _rocketPrefab;
@@ -58,7 +66,6 @@ public class RoleSelectManager : MonoBehaviour
         Debug.Log("Joining WASD");
 
         PlayerInput input = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "KeyboardWASD", pairWithDevice: context.control.device);
-        texts[_joinControllerCount].text = "Pilot";
         //　スクリプト初期設定
         _roleSelectInputs[_joinControllerCount] = input.GetComponent<RoleSelectInput>();
         _roleSelectInputs[_joinControllerCount].ThisController = (WhichController)_joinControllerCount;
@@ -83,7 +90,6 @@ public class RoleSelectManager : MonoBehaviour
         Debug.Log("Joining arrow keys");
 
         PlayerInput input = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "KeyboardArrowKeys", pairWithDevice: context.control.device);
-        texts[0].text = "Pilot";
         //　スクリプト初期設定
         _roleSelectInputs[_joinControllerCount] = input.GetComponent<RoleSelectInput>();
         _roleSelectInputs[_joinControllerCount].ThisController = (WhichController)_joinControllerCount;
@@ -114,7 +120,9 @@ public class RoleSelectManager : MonoBehaviour
             case 0:
                 //　１つ目のセレクト召喚
                 PlayerInput p1 = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "Controller", pairWithDevice: context.control.device);
-                texts[0].text = "Pilot";
+                SelectRole(WhichController.One, RoleSelect.Pilot);
+                _waitTexts[0].SetActive(false);
+                _roleTexts[0].gameObject.SetActive(true);
                 //　スクリプト初期設定
                 _roleSelectInputs[0] = p1.GetComponent<RoleSelectInput>();
                 _roleSelectInputs[0].ThisController = WhichController.One;
@@ -128,7 +136,9 @@ public class RoleSelectManager : MonoBehaviour
                 if (context.control.device == _firstDevice) return;
                 //　２つ目のセレクト召喚
                 PlayerInput p2 = PlayerInput.Instantiate(_playerInputObject, pairWithDevice: context.control.device);
-                texts[1].text = "Pilot";
+                SelectRole(WhichController.Two, RoleSelect.Pilot);
+                _waitTexts[1].SetActive(false);
+                _roleTexts[1].gameObject.SetActive(true);
                 //　スクリプト初期設定
                 _roleSelectInputs[1] = p2.GetComponent<RoleSelectInput>();
                 _roleSelectInputs[1].ThisController = WhichController.Two;
@@ -151,8 +161,18 @@ public class RoleSelectManager : MonoBehaviour
     public void SelectRole(WhichController whichController, RoleSelect roleSelect)
     {
         //　コントローラーに対応した役職表示
-        if (roleSelect == RoleSelect.Pilot) texts[(int)whichController].text = "Pilot";
-        else if (roleSelect == RoleSelect.Gunner) texts[(int)whichController].text = "Gunner";
+        if (roleSelect == RoleSelect.Pilot)
+        {
+            _roleTexts[(int)whichController].sprite = _pilotText;
+            _rArrows[(int)whichController].enabled = true;
+            _lArrows[(int)whichController].enabled = false;
+        }
+        else if (roleSelect == RoleSelect.Gunner)
+        {
+            _roleTexts[(int)whichController].sprite = _gunnerText;
+            _rArrows[(int)whichController].enabled = false;
+            _lArrows[(int)whichController].enabled = true;
+        }
     }
 
     /// <summary>
@@ -164,6 +184,17 @@ public class RoleSelectManager : MonoBehaviour
     {
         //　コントローラーに対応した準備完了表示
         _doReadys[(int)whichController].SetActive(ready);
+        //　矢印の表示非表示
+        if (ready)
+        {
+            _rArrows[(int)whichController].color = new Color(1f, 1f, 1f, 0f);
+            _lArrows[(int)whichController].color = new Color(1f, 1f, 1f, 0f);
+        }
+        else
+        {
+            _rArrows[(int)whichController].color = Color.white;
+            _lArrows[(int)whichController].color = Color.white;
+        }
     }
 
     //　ゲーム開始
@@ -186,6 +217,7 @@ public class RoleSelectManager : MonoBehaviour
         Debug.Log("ゲーム開始");
         _rocketShip = Instantiate(_rocketPrefab).GetComponent<RocketShip>();;
         _rocketShip.SetPlayerInputs(_roleSelectInputs);
+        MaingameManager.Instance.IsGaming = true;
         this.gameObject.SetActive(false);
     }
 }

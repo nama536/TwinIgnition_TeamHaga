@@ -15,6 +15,7 @@ public class ObstacleManager : MonoBehaviour
 
     void Update()
     {
+        if (MaingameManager.Instance.IsGaming == false) return;
         timer += Time.deltaTime;
 
         // インスペクターで設定した時間を超えたら生成
