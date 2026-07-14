@@ -71,6 +71,8 @@ public class RoleSelectManager : MonoBehaviour
         _roleSelectInputs[_joinControllerCount].ThisController = (WhichController)_joinControllerCount;
         _roleSelectInputs[_joinControllerCount].RoleSelectManager = this;
         _joinButton.performed -= JoinKeyboardWASD;
+        _waitTexts[_joinControllerCount].SetActive(false);
+        _roleTexts[_joinControllerCount].gameObject.SetActive(true);
         //　１つ目参加終了処理
         if (_joinControllerCount  < 1){
             _joinControllerCount++;
@@ -95,6 +97,8 @@ public class RoleSelectManager : MonoBehaviour
         _roleSelectInputs[_joinControllerCount].ThisController = (WhichController)_joinControllerCount;
         _roleSelectInputs[_joinControllerCount].RoleSelectManager = this;
         _joinButton.performed -= JoinKeyboardArrowKeys;
+        _waitTexts[_joinControllerCount].SetActive(false);
+        _roleTexts[_joinControllerCount].gameObject.SetActive(true);
         //　１つ目参加終了処理
         if (_joinControllerCount  < 1){
             _joinControllerCount++;
