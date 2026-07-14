@@ -7,6 +7,8 @@ public class RoleSelectManager : MonoBehaviour
 {
     //　キャラセレクトに参加用ボタン
     [SerializeField] InputAction _joinButton;
+    [SerializeField] InputAction _joinKeyboardWASD;
+    [SerializeField] InputAction _joinKeyboardArrowKeys;
     //　キャラ選択用プレイヤーインプットオブジェクト（プレハブ）
     [SerializeField] GameObject _playerInputObject;
     //　何を選んでいるか表示
@@ -42,7 +44,64 @@ public class RoleSelectManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
         _joinButton.Enable();
         _joinButton.performed += PushSouthButton;
+
+        _joinKeyboardArrowKeys.Enable();
+        _joinKeyboardArrowKeys.performed += JoinKeyboardArrowKeys;
+
+        _joinKeyboardWASD.Enable();
+        _joinKeyboardWASD.performed += JoinKeyboardWASD;
     }
+    //WASDキーボード入力用
+    private void JoinKeyboardWASD(InputAction.CallbackContext context){
+        if (_joinControllerCount >= 2) return;
+        Debug.Log("Joining WASD");
+
+        PlayerInput input = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "KeyboardWASD", pairWithDevice: context.control.device);
+        texts[_joinControllerCount].text = "Pilot";
+        //　スクリプト初期設定
+        _roleSelectInputs[_joinControllerCount] = input.GetComponent<RoleSelectInput>();
+        _roleSelectInputs[_joinControllerCount].ThisController = (WhichController)_joinControllerCount;
+        _roleSelectInputs[_joinControllerCount].RoleSelectManager = this;
+        _joinButton.performed -= JoinKeyboardWASD;
+        //　１つ目参加終了処理
+        if (_joinControllerCount  < 1){
+            _joinControllerCount++;
+            _firstDevice = context.control.device;
+        }
+        else{
+            _joinControllerCount++;
+            _joinButton.Disable();
+
+            _roleSelectInputs[0].OtherRoleSelectInput = _roleSelectInputs[1];
+            _roleSelectInputs[1].OtherRoleSelectInput = _roleSelectInputs[0];
+        }
+    }
+
+    private void JoinKeyboardArrowKeys(InputAction.CallbackContext context){
+        if (_joinControllerCount >= 2) return;
+        Debug.Log("Joining arrow keys");
+
+        PlayerInput input = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "KeyboardArrowKeys", pairWithDevice: context.control.device);
+        texts[0].text = "Pilot";
+        //　スクリプト初期設定
+        _roleSelectInputs[_joinControllerCount] = input.GetComponent<RoleSelectInput>();
+        _roleSelectInputs[_joinControllerCount].ThisController = (WhichController)_joinControllerCount;
+        _roleSelectInputs[_joinControllerCount].RoleSelectManager = this;
+        _joinButton.performed -= JoinKeyboardArrowKeys;
+        //　１つ目参加終了処理
+        if (_joinControllerCount  < 1){
+            _joinControllerCount++;
+            _firstDevice = context.control.device;
+        }
+        else{
+            _joinControllerCount++;
+            _joinButton.Disable();
+
+            _roleSelectInputs[0].OtherRoleSelectInput = _roleSelectInputs[1];
+            _roleSelectInputs[1].OtherRoleSelectInput = _roleSelectInputs[0];
+        }
+    }
+
     private void PushSouthButton(InputAction.CallbackContext context)
     {
         //　参加コントローラーが２つ以上なら処理終了
@@ -53,7 +112,7 @@ public class RoleSelectManager : MonoBehaviour
             //　参加コントローラーが０なら
             case 0:
                 //　１つ目のセレクト召喚
-                PlayerInput p1 = PlayerInput.Instantiate(_playerInputObject, pairWithDevice: context.control.device);
+                PlayerInput p1 = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "Controller", pairWithDevice: context.control.device);
                 texts[0].text = "Pilot";
                 //　スクリプト初期設定
                 _roleSelectInputs[0] = p1.GetComponent<RoleSelectInput>();
@@ -124,6 +183,7 @@ public class RoleSelectManager : MonoBehaviour
             Debug.Log(roleSelectInput.ThisController + roleSelectInput.PlayerInput.currentActionMap.name);
         }
         Debug.Log("ゲーム開始");
+        _rocketShip.SetPlayerInputs(_roleSelectInputs);
         this.gameObject.SetActive(false);
     }
 }

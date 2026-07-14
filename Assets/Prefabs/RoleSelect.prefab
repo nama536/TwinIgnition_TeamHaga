@@ -379,6 +379,40 @@ MonoBehaviour:
       m_Action: Join Button
       m_Flags: 0
     m_Flags: 0
+  _joinKeyboardWASD:
+    m_Name: Join Keyboard WASD
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7afd03d7-f223-49de-a76b-6610afb8d37e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 23cf855a-f9dc-4134-a956-2888e821b24b
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Join Keyboard WASD
+      m_Flags: 0
+    m_Flags: 0
+  _joinKeyboardArrowKeys:
+    m_Name: Join Keyboard Arrow Keys
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d4702bce-d783-4ccb-aa16-9b72eb94a7bf
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a58515fc-edd9-4be4-b50d-cc86e49c64b7
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Join Keyboard Arrow Keys
+      m_Flags: 0
+    m_Flags: 0
   _playerInputObject: {fileID: 5624338515912319698, guid: 5e0de04a60c2313498254ce9121c12b7, type: 3}
   texts:
   - {fileID: 6195994295905875426}
@@ -386,6 +420,7 @@ MonoBehaviour:
   _doReadys:
   - {fileID: 6083928765992744536}
   - {fileID: 2503327960120930497}
+  _rocketShip: {fileID: 0}
 --- !u!1 &6083928765992744536
 GameObject:
   m_ObjectHideFlags: 0
