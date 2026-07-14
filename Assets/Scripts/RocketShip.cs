@@ -18,6 +18,10 @@ public class RocketShip : MonoBehaviour
     private InputAction _boost;
 
     private Rigidbody2D _rb;
+    [SerializeField]
+    private GameObject _reticle;
+    [SerializeField]
+    private float _aimSensitivity;
 
     private void Awake(){
         _rb = GetComponent<Rigidbody2D>();
@@ -72,7 +76,7 @@ public class RocketShip : MonoBehaviour
         if (aimInput.magnitude > 0.05f){
             //Handle aiming
             Debug.Log(aimInput.x + " " + aimInput.y);
-            _rb.AddTorque(aimInput.x);
+            _reticle.transform.Rotate(new Vector3(0, 0, -1 * _aimSensitivity * aimInput.x * Time.deltaTime));
         }
     }
 }
