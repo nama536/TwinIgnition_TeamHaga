@@ -34,6 +34,7 @@ public class BackGroundMover : MonoBehaviour
 
     private void Update()
     {
+        if (MaingameManager.Instance.IsGaming == false) return;
         if (Time.timeScale == 0f)
         {
             return;
