@@ -15,7 +15,8 @@ public class RoleSelectManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] texts;
     //　準備完了表示
     [SerializeField] GameObject[] _doReadys;
-    [SerializeField] RocketShip _rocketShip;
+    [SerializeField] GameObject _rocketPrefab;
+    private RocketShip _rocketShip;
 
     //　どの役職を選択したか
     public enum RoleSelect
@@ -183,6 +184,7 @@ public class RoleSelectManager : MonoBehaviour
             Debug.Log(roleSelectInput.ThisController + roleSelectInput.PlayerInput.currentActionMap.name);
         }
         Debug.Log("ゲーム開始");
+        _rocketShip = Instantiate(_rocketPrefab).GetComponent<RocketShip>();;
         _rocketShip.SetPlayerInputs(_roleSelectInputs);
         this.gameObject.SetActive(false);
     }

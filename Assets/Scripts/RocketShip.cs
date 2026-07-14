@@ -17,6 +17,12 @@ public class RocketShip : MonoBehaviour
     private InputAction _move;
     private InputAction _boost;
 
+    private Rigidbody2D _rb;
+
+    private void Awake(){
+        _rb = GetComponent<Rigidbody2D>();
+    }
+
     public void SetPlayerInputs(RoleSelectInput[] roleSelectInputs){
         _roleSelectInputs = roleSelectInputs;
         for (uint i = 0; i < _roleSelectInputs.Length; i++){
@@ -51,5 +57,22 @@ public class RocketShip : MonoBehaviour
 
     private void PilotBoost(InputAction.CallbackContext context){
         Debug.Log("Boost");
+    }
+
+    private void Update(){
+        Vector2 moveInput = _move.ReadValue<Vector2>();
+        Vector2 aimInput = _aim.ReadValue<Vector2>();
+        if (moveInput.magnitude > 0.05f){
+            //Handle movement
+            // Debug.Log(moveInput.x + " " + moveInput.y);
+            _rb.AddForce(transform.up * moveInput.y);
+            _rb.AddForce(transform.right * moveInput.x);
+        }
+
+        if (aimInput.magnitude > 0.05f){
+            //Handle aiming
+            Debug.Log(aimInput.x + " " + aimInput.y);
+            _rb.AddTorque(aimInput.x);
+        }
     }
 }
