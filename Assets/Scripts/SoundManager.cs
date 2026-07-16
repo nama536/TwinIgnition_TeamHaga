@@ -76,15 +76,19 @@ public class SoundManager : MonoBehaviour
         switch (scene.name)
         {
             case "TitleScene":
-                PlayBGM("TitleScene");
+                PlayBGM("TitleScene", 0.5f);
                 break;
 
             case "TestSoundScene":
-                PlayBGM("TestSoundScene");
+                PlayBGM("TestSoundScene", 1f);
                 break;
 
             case "ResultScene":
-                PlayBGM("ResultScene");
+                PlayBGM("ResultScene", 0.3f);
+                break;
+
+            case "MainScene":
+                PlayBGM("MainScene", 0.3f);
                 break;
 
             default:
@@ -129,7 +133,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayBGM(string name)
+    public void PlayBGM(string name, float volume)
     {
         if (!bgmDictionary.TryGetValue(name, out var bgmData))
         {
@@ -142,6 +146,7 @@ public class SoundManager : MonoBehaviour
         }
 
         bgmAudioSource.clip = bgmData.clip;
+        bgmAudioSource.volume = volume;
         bgmAudioSource.Play();
 
 

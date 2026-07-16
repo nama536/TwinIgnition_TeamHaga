@@ -63,6 +63,7 @@ public class RocketShip : MonoBehaviour
         MaingameManager.Instance.DoShot();
         if (MaingameManager.Instance.CanShot == false) return;
         Debug.Log("Shoot");
+        SoundManager.Instance.Play("Shot");
         GameObject leftProjectile = Instantiate(_projectile, transform.position + (1.2f * _reticle.transform.up) + (_reticle.transform.right * 0.2f), _reticle.transform.rotation);
         Rigidbody2D leftRB = leftProjectile.GetComponent<Rigidbody2D>();
         leftRB.linearVelocity = _reticle.transform.up * 10f;

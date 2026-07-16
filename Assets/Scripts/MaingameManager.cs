@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MaingameManager : MonoBehaviour
 {
@@ -35,5 +37,12 @@ public class MaingameManager : MonoBehaviour
     public void DoShot()
     {
         energyManager.ConsumeEnergyForShoot();
+    }
+
+    //　リザルトへ移動
+    public IEnumerator GameEnd()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("ResultScene");
     }
 }

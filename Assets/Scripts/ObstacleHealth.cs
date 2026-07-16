@@ -33,6 +33,7 @@ public class ObstacleHealth : MonoBehaviour
                 TryDropItem();
 
                 // 自分自身を破壊
+                SoundManager.Instance.Play("Dokann");
                 Destroy(gameObject);
             }
         }

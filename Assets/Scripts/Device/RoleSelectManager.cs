@@ -85,6 +85,8 @@ public class RoleSelectManager : MonoBehaviour
             _roleSelectInputs[0].OtherRoleSelectInput = _roleSelectInputs[1];
             _roleSelectInputs[1].OtherRoleSelectInput = _roleSelectInputs[0];
         }
+
+        SoundManager.Instance.Play("Click");
     }
 
     private void JoinKeyboardArrowKeys(InputAction.CallbackContext context){
@@ -111,6 +113,8 @@ public class RoleSelectManager : MonoBehaviour
             _roleSelectInputs[0].OtherRoleSelectInput = _roleSelectInputs[1];
             _roleSelectInputs[1].OtherRoleSelectInput = _roleSelectInputs[0];
         }
+
+        SoundManager.Instance.Play("Click");
     }
 
     private void PushSouthButton(InputAction.CallbackContext context)
@@ -155,6 +159,8 @@ public class RoleSelectManager : MonoBehaviour
                 _joinButton.Disable();
                 break;
         }
+
+        SoundManager.Instance.Play("Click");
     }
 
     /// <summary>
@@ -177,6 +183,8 @@ public class RoleSelectManager : MonoBehaviour
             _rArrows[(int)whichController].enabled = false;
             _lArrows[(int)whichController].enabled = true;
         }
+
+        SoundManager.Instance.Play("Click");
     }
 
     /// <summary>
@@ -199,6 +207,8 @@ public class RoleSelectManager : MonoBehaviour
             _rArrows[(int)whichController].color = Color.white;
             _lArrows[(int)whichController].color = Color.white;
         }
+
+        SoundManager.Instance.Play("Click");
     }
 
     //　ゲーム開始

@@ -118,6 +118,8 @@ public class BossController : MonoBehaviour
                 enemy.SetDirection(angle);
             }
         }
+
+        SoundManager.Instance.Play("Shot");
     }
 
     // 左右レーザー
@@ -141,5 +143,7 @@ public class BossController : MonoBehaviour
         {
             Instantiate(laserPrefab, rightLaserPoint.position, Quaternion.Euler(0, 0, rightLaserAngle));
         }
+
+        SoundManager.Instance.Play("Shot");
     }
 }

@@ -56,5 +56,6 @@ public class EnemyManager : MonoBehaviour
     {
         stageProgressBar.Arrived = false;
         backGroundMover.Restart();
+        StartCoroutine(MaingameManager.Instance.GameEnd());
     }
 }

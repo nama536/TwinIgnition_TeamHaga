@@ -42,6 +42,7 @@ public class BossHealth : MonoBehaviour
         {
             Instantiate(destroyEffect, transform.position, Quaternion.identity);
         }
+        SoundManager.Instance.Play("Dokann");
 
         // ボスを破壊
         EnemyManager.BossClear();

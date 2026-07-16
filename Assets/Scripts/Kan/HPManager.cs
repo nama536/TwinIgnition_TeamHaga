@@ -23,6 +23,8 @@ public class HPManager : MonoBehaviour
         {
             HP3.SetActive(false);
         }
+
+        SoundManager.Instance.Play("Damage");
     }
 }
 
