@@ -7,20 +7,21 @@ public class HPManager : MonoBehaviour
     [SerializeField] private GameObject HP2;
     [SerializeField] private GameObject HP3;
    
-    private void OnCollisionEnter(Collision collision)
+    public void GetDamage()
     {
-        HP3.SetActive(false);
-        if (HP3.activeSelf == false)
-        {
-            HP2.SetActive(false);
-        }
         if (HP2.activeSelf == false)
         {
             HP1.SetActive(false);
-        }
-        if (HP1.activeSelf == false)
-        {
             Debug.Log("Game Over");
+            MaingameManager.Instance.IsGaming = false;
+        }
+        else if (HP3.activeSelf == false)
+        {
+            HP2.SetActive(false);
+        }
+        else
+        {
+            HP3.SetActive(false);
         }
     }
 }

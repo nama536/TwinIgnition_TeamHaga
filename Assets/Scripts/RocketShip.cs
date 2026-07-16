@@ -56,6 +56,8 @@ public class RocketShip : MonoBehaviour
     }
 
     private void GunnerShoot(InputAction.CallbackContext context){
+        MaingameManager.Instance.DoShot();
+        if (MaingameManager.Instance.CanShot == false) return;
         Debug.Log("Shoot");
     }
 

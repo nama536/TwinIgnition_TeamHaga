@@ -19,4 +19,21 @@ public class MaingameManager : MonoBehaviour
 
     //　現在ゲーム中かどうか
     [HideInInspector] public bool IsGaming = false;
+    //　弾を撃てるか
+    [HideInInspector] public bool CanShot = true;
+
+    [SerializeField] HPManager hpManager;
+    [SerializeField] EnergyManager energyManager;
+
+    // プレイヤーへのダメージ処理
+    public void GetDamage()
+    {
+        hpManager.GetDamage();
+    }
+
+    //　弾エネルギー消費処理
+    public void DoShot()
+    {
+        energyManager.ConsumeEnergyForShoot();
+    }
 }

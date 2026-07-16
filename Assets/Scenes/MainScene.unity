@@ -279,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 330192535}
   - component: {fileID: 330192536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lwall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 405498060}
   - component: {fileID: 405498061}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Twall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,6 +613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaingameManager
   IsGaming: 0
+  CanShot: 1
+  hpManager: {fileID: 1357524508}
+  energyManager: {fileID: 456458207}
 --- !u!4 &459107254
 Transform:
   m_ObjectHideFlags: 0
@@ -1302,7 +1305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 875459916}
   - component: {fileID: 875459917}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1530,7 +1533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1099191605}
   - component: {fileID: 1099191606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rwall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1642,6 +1645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1357524507}
+  - component: {fileID: 1357524508}
   m_Layer: 5
   m_Name: HPManager
   m_TagString: Untagged
@@ -1672,6 +1676,21 @@ RectTransform:
   m_AnchoredPosition: {x: -811, y: -341}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1357524508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357524506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed1c70b4c216654199e64f025556c0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HPManager
+  HP1: {fileID: 620573892}
+  HP2: {fileID: 1979858886}
+  HP3: {fileID: 1022821727}
 --- !u!1 &1588664842
 GameObject:
   m_ObjectHideFlags: 0

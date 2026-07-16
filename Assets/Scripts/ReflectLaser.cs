@@ -66,4 +66,15 @@ public class ReflectLaser : MonoBehaviour
             }
         }
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // プレイヤーに当たったら
+        if (collision.CompareTag("Player"))
+        {
+            // プレイヤー側へのダメージ処理
+            MaingameManager.Instance.GetDamage();
+        }
+    }
 }

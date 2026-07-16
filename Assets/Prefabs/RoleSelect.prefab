@@ -908,6 +908,24 @@ MonoBehaviour:
       m_Action: Join Button
       m_Flags: 0
     m_Flags: 0
+  _joinKeyboardWASD:
+    m_Name: Join Keyboard WASD
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f4d68ad2-73cf-4b99-b544-4d5118c7e1a3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _joinKeyboardArrowKeys:
+    m_Name: Join Keyboard Arrow Keys
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 28ea64f5-6318-4b49-a3e6-90744a6e0f7f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   _waitTexts:
   - {fileID: 200281429238419198}
   - {fileID: 6678681361841879768}
@@ -926,6 +944,7 @@ MonoBehaviour:
   _doReadys:
   - {fileID: 6083928765992744536}
   - {fileID: 2503327960120930497}
+  _rocketPrefab: {fileID: 0}
 --- !u!1 &5633266095804937442
 GameObject:
   m_ObjectHideFlags: 0

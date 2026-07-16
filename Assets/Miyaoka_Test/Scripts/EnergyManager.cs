@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class EnergyManager : MonoBehaviour
 {
-    // ƒGƒlƒ‹ƒM[‰ñ•œ‘¬“x
+    // ï¿½Gï¿½lï¿½ï¿½ï¿½Mï¿½[ï¿½ñ•œ‘ï¿½ï¿½x
     [SerializeField] private float _recoveryRate = 3f;
     
-    // ƒGƒlƒ‹ƒM[‚ÌUIImage
+    // ï¿½Gï¿½lï¿½ï¿½ï¿½Mï¿½[ï¿½ï¿½UIImage
     [SerializeField] private Image _energyImage;
 
     private float _currentEnergy;
-    private const float MaxEnergy = 100f;
+    private const float MaxEnergy = 30f;
 
     void Start()
     {
@@ -37,17 +37,19 @@ public class EnergyManager : MonoBehaviour
 
         if (_currentEnergy >= _shootCost)
         {
+            MaingameManager.Instance.CanShot = true;
             _currentEnergy -= _shootCost;
             UpdateEnergyUI();
             return true; 
         }
 
-        Debug.Log("ƒGƒlƒ‹ƒM[‚ª‘«‚è‚Ü‚¹‚ñI");
+        MaingameManager.Instance.CanShot = false;
+        Debug.Log("ï¿½Gï¿½lï¿½ï¿½ï¿½Mï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½I");
         return false; 
     }
 
     /// <summary>
-    /// UI‚ÌImage‚ğXV‚·‚é
+    /// UIï¿½ï¿½Imageï¿½ï¿½ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void UpdateEnergyUI()
     {

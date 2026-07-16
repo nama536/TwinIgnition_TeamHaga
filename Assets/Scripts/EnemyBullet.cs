@@ -40,10 +40,10 @@ public class EnemyBullet : MonoBehaviour
         // プレイヤーに当たったら消える
         if (collision.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            // プレイヤー側へのダメージ処理
+            MaingameManager.Instance.GetDamage();
 
-            // プレイヤー側にダメージ処理がある場合
-            // collision.GetComponent<PlayerHealth>()?.TakeDamage(1);
+            Destroy(gameObject);
         }
     }
 }

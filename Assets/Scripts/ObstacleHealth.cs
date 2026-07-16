@@ -36,6 +36,15 @@ public class ObstacleHealth : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        // プレイヤーに当たったら
+        else if (collision.CompareTag("Player"))
+        {
+            // プレイヤーへのダメージ処理
+            MaingameManager.Instance.GetDamage();
+
+            // 自分自身を破壊
+            Destroy(gameObject);
+        }
     }
 
     void TryDropItem()
