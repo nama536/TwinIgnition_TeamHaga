@@ -139,7 +139,7 @@ public class RoleSelectManager : MonoBehaviour
                 //　もし既に参加してるデバイスなら処理終了
                 if (context.control.device == _firstDevice) return;
                 //　２つ目のセレクト召喚
-                PlayerInput p2 = PlayerInput.Instantiate(_playerInputObject, pairWithDevice: context.control.device);
+                PlayerInput p2 = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "Controller", pairWithDevice: context.control.device);
                 SelectRole(WhichController.Two, RoleSelect.Pilot);
                 _waitTexts[1].SetActive(false);
                 _roleTexts[1].gameObject.SetActive(true);
