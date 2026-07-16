@@ -252,6 +252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RocketShip
   _reticle: {fileID: 4414783896839998399}
   _aimSensitivity: 200
+  _projectile: {fileID: 1285889774585824151, guid: 9aaa296e2a50e28248c5a67925dd3314, type: 3}
+  _special: {fileID: 0}
 --- !u!212 &3287250633566347706
 SpriteRenderer:
   serializedVersion: 2

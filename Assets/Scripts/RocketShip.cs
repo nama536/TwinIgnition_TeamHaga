@@ -22,6 +22,10 @@ public class RocketShip : MonoBehaviour
     private GameObject _reticle;
     [SerializeField]
     private float _aimSensitivity;
+    [SerializeField]
+    private GameObject _projectile;
+    [SerializeField]
+    private GameObject _special;
 
     private void Awake(){
         _rb = GetComponent<Rigidbody2D>();
@@ -57,6 +61,12 @@ public class RocketShip : MonoBehaviour
 
     private void GunnerShoot(InputAction.CallbackContext context){
         Debug.Log("Shoot");
+        GameObject leftProjectile = Instantiate(_projectile, transform.position + (1.2f * _reticle.transform.up) + (_reticle.transform.right * 0.2f), _reticle.transform.rotation);
+        Rigidbody2D leftRB = leftProjectile.GetComponent<Rigidbody2D>();
+        leftRB.linearVelocity = _reticle.transform.up * 10f;
+        GameObject rightProjectile = Instantiate(_projectile, transform.position + (1.2f * _reticle.transform.up) - (_reticle.transform.right * 0.2f), _reticle.transform.rotation);
+        Rigidbody2D rightRB = rightProjectile.GetComponent<Rigidbody2D>();
+        rightRB.linearVelocity = _reticle.transform.up * 10f;
     }
 
     private void PilotBoost(InputAction.CallbackContext context){
