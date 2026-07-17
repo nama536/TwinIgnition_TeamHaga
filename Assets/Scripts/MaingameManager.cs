@@ -23,6 +23,10 @@ public class MaingameManager : MonoBehaviour
     [HideInInspector] public bool IsGaming = false;
     //　弾を撃てるか
     [HideInInspector] public bool CanShot = true;
+    //　クリアしたか
+    [HideInInspector] public bool DoClear = false;
+    //　スコア
+    [HideInInspector] public int Score = 0;
 
     [SerializeField] HPManager hpManager;
     [SerializeField] EnergyManager energyManager;

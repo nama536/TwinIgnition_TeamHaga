@@ -14,6 +14,7 @@ public class HPManager : MonoBehaviour
             HP1.SetActive(false);
             Debug.Log("Game Over");
             MaingameManager.Instance.IsGaming = false;
+            StartCoroutine(MaingameManager.Instance.GameEnd());
         }
         else if (HP3.activeSelf == false)
         {

@@ -224,6 +224,8 @@ MonoBehaviour:
   leftLaserPoint: {fileID: 1663408570376329736}
   rightLaserPoint: {fileID: 2132469923474500703}
   laserInterval: 8
+  leftLaserAngle: -45
+  rightLaserAngle: -135
 --- !u!114 &8433685112603729974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,8 +238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75aa461b39492f64f87b6ce1b6553313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
-  maxHp: 100
+  maxHp: 10
   destroyEffect: {fileID: 0}
+  EnemyManager: {fileID: 0}
 --- !u!1 &5666627061464992172
 GameObject:
   m_ObjectHideFlags: 0

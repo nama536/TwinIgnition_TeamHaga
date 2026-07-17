@@ -3,7 +3,7 @@ using UnityEngine;
 public class BossHealth : MonoBehaviour
 {
     [Header("ボスHP")]
-    [SerializeField] private int maxHp = 100;
+    [SerializeField] private int maxHp = 10;
 
     private int currentHp;
 
