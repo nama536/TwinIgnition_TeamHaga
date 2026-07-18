@@ -10,12 +10,6 @@ public class MaingameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
         }
     }
 
@@ -23,13 +17,18 @@ public class MaingameManager : MonoBehaviour
     [HideInInspector] public bool IsGaming = false;
     //　弾を撃てるか
     [HideInInspector] public bool CanShot = true;
-    //　クリアしたか
-    [HideInInspector] public bool DoClear = false;
-    //　スコア
-    [HideInInspector] public int Score = 0;
+
+    //　ゲームデータ保存用
+    public GameData GameData;
 
     [SerializeField] HPManager hpManager;
     [SerializeField] EnergyManager energyManager;
+
+    void Start()
+    {
+        GameData.DoClear = false;
+        GameData.Score = 0;
+    }
 
     // プレイヤーへのダメージ処理
     public void GetDamage()

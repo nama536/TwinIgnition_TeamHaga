@@ -59,51 +59,15 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2514788144897958002}
-        m_TargetAssemblyTypeName: RoleSelectInput, Assembly-CSharp
-        m_MethodName: Confirm
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 4cb27cdf-f335-4dd5-a3a8-a643d97c3593
     m_ActionName: Select/Confirn
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2514788144897958002}
-        m_TargetAssemblyTypeName: RoleSelectInput, Assembly-CSharp
-        m_MethodName: Cancel
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 595281a3-d4b7-4862-9a24-fe052324eab6
     m_ActionName: Select/Cancel
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2514788144897958002}
-        m_TargetAssemblyTypeName: RoleSelectInput, Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: ac80fea6-053f-4fa1-b626-19e92d8d2f9b
     m_ActionName: Select/Select
   - m_PersistentCalls:
@@ -114,6 +78,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 53a551d5-f74d-45ba-87ea-b513fe9ec256
     m_ActionName: Gunner/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f872e2aa-39de-46e2-bfc5-05b244fb7af8
+    m_ActionName: 'Pilot/Boost[/DualShock4GamepadHID/buttonSouth,/Keyboard/space,/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6bb0870-fcac-4738-80ed-4c8997da0e09
+    m_ActionName: 'Gunner/Shoot[/DualShock4GamepadHID/buttonSouth,/Keyboard/space,/Keyboard/enter]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Select

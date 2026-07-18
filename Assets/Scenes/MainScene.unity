@@ -742,6 +742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MaingameManager
   IsGaming: 0
   CanShot: 1
+  GameData: {fileID: 11400000, guid: c4aeb45458e94524cacfb4e014811686, type: 2}
   hpManager: {fileID: 1357524508}
   energyManager: {fileID: 456458207}
 --- !u!4 &459107254

@@ -1372,6 +1372,7 @@ MonoBehaviour:
   _scoreText: {fileID: 269382909}
   _titleButton: {fileID: 536748175}
   _retryButton: {fileID: 389633572}
+  _gameData: {fileID: 11400000, guid: c4aeb45458e94524cacfb4e014811686, type: 2}
 --- !u!4 &1530562744
 Transform:
   m_ObjectHideFlags: 0

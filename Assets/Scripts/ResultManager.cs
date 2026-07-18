@@ -8,6 +8,7 @@ public class ResultManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _resultText, _scoreText;
     [SerializeField] Button _titleButton, _retryButton;
+    [SerializeField] GameData _gameData;
 
     void Start()
     {
@@ -17,12 +18,12 @@ public class ResultManager : MonoBehaviour
     private IEnumerator StartResult()
     {
         yield return new WaitForSeconds(1f);
-        if (MaingameManager.Instance.DoClear) _resultText.text = "Clear!";
+        if (_gameData.DoClear) _resultText.text = "Clear!";
         else _resultText.text = "Failure";
         _resultText.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(1f);
-        _scoreText.text = "Score: " + MaingameManager.Instance.Score.ToString();
+        _scoreText.text = "Score: " + _gameData.Score.ToString();
         _scoreText.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(1f);
@@ -30,8 +31,8 @@ public class ResultManager : MonoBehaviour
         _retryButton.gameObject.SetActive(true);
         _titleButton.Select();
 
-        MaingameManager.Instance.DoClear = false;
-        MaingameManager.Instance.Score = 0;
+        _gameData.DoClear = false;
+        _gameData.Score = 0;
     }
 
     public void TitleButton()

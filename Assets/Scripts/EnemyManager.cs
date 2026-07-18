@@ -56,8 +56,8 @@ public class EnemyManager : MonoBehaviour
     {
         stageProgressBar.Arrived = false;
         backGroundMover.Restart();
-        MaingameManager.Instance.DoClear = true;
-        MaingameManager.Instance.Score += 1000;
+        MaingameManager.Instance.GameData.DoClear = true;
+        MaingameManager.Instance.GameData.Score += 1000;
         StartCoroutine(MaingameManager.Instance.GameEnd());
     }
 }

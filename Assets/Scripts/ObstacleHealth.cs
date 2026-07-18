@@ -34,7 +34,7 @@ public class ObstacleHealth : MonoBehaviour
 
                 // 自分自身を破壊
                 SoundManager.Instance.Play("Dokann");
-                MaingameManager.Instance.Score += 100;
+                MaingameManager.Instance.GameData.Score += 100;
                 Destroy(gameObject);
             }
         }
@@ -45,7 +45,7 @@ public class ObstacleHealth : MonoBehaviour
             MaingameManager.Instance.GetDamage();
 
             // 自分自身を破壊
-            MaingameManager.Instance.Score -= 300;
+            MaingameManager.Instance.GameData.Score -= 300;
             Destroy(gameObject);
         }
     }

@@ -21,6 +21,11 @@ public class RoleSelectInput : MonoBehaviour
     InputAction cancel;
 
     public void Start(){
+        
+        Debug.Log("Count" + PlayerInput.devices.Count);
+        Debug.Log("Index" + PlayerInput.playerIndex);
+        Debug.Log(PlayerInput.GetDevice<Gamepad>().GetHashCode());
+
         select = PlayerInput.actions.FindActionMap("Select").FindAction("Select");
         confirm = PlayerInput.actions.FindActionMap("Select").FindAction("Confirm");
         cancel = PlayerInput.actions.FindActionMap("Select").FindAction("Cancel");

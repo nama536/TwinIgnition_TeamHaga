@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem.Users;
 
 public class RoleSelectManager : MonoBehaviour
 {
@@ -119,6 +120,7 @@ public class RoleSelectManager : MonoBehaviour
 
     private void PushSouthButton(InputAction.CallbackContext context)
     {
+        Debug.Log(context.control.device.name);
         //　参加コントローラーが２つ以上なら処理終了
         if (_joinControllerCount >= 2) return;
 
@@ -127,7 +129,16 @@ public class RoleSelectManager : MonoBehaviour
             //　参加コントローラーが０なら
             case 0:
                 //　１つ目のセレクト召喚
-                PlayerInput p1 = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "Controller", pairWithDevice: context.control.device);
+                //PlayerInput p1 = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "Controller", pairWithDevice: context.control.device);
+
+                GameObject p1 = Instantiate(_playerInputObject);
+                PlayerInput input1 = p1.GetComponent<PlayerInput>();
+                input1.SwitchCurrentControlScheme("Controller", Gamepad.all[0]);
+                input1.neverAutoSwitchControlSchemes = true;
+
+                InputUser newUser = InputUser.all[^1];
+                newUser.UnpairDevices();
+                InputUser.PerformPairingWithDevice(context.control.device, newUser);
                 SelectRole(WhichController.One, RoleSelect.Pilot);
                 _waitTexts[0].SetActive(false);
                 _roleTexts[0].gameObject.SetActive(true);
@@ -143,7 +154,16 @@ public class RoleSelectManager : MonoBehaviour
                 //　もし既に参加してるデバイスなら処理終了
                 if (context.control.device == _firstDevice) return;
                 //　２つ目のセレクト召喚
-                PlayerInput p2 = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "Controller", pairWithDevice: context.control.device);
+                //PlayerInput p2 = PlayerInput.Instantiate(_playerInputObject, _joinControllerCount, "Controller1", pairWithDevice: context.control.device);
+
+                GameObject p2 = Instantiate(_playerInputObject);
+                PlayerInput input2 = p2.GetComponent<PlayerInput>();
+                input2.SwitchCurrentControlScheme("Controller", Gamepad.all[1]);
+                input2.neverAutoSwitchControlSchemes = true;
+
+                InputUser newUser1 = InputUser.all[^1];
+                newUser1.UnpairDevices();
+                InputUser.PerformPairingWithDevice(context.control.device, newUser1);
                 SelectRole(WhichController.Two, RoleSelect.Pilot);
                 _waitTexts[1].SetActive(false);
                 _roleTexts[1].gameObject.SetActive(true);
