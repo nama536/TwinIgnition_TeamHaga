@@ -8,13 +8,13 @@ using UnityEngine.UI;
 
 public class SceneTrangition : MonoBehaviour
 {
-    //float Speed = 0.02f;        //ƒtƒF[ƒh‚·‚éƒXƒs[ƒh
+    //float Speed = 0.02f;        //ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½Xï¿½sï¿½[ï¿½h
     //float red, green, blue, alfa;
 
     //public bool Out = false;
     //public bool In = false;
 
-    //[SerializeField] Image fadeImage;                //ƒpƒlƒ‹
+    //[SerializeField] Image fadeImage;                //ï¿½pï¿½lï¿½ï¿½
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -76,15 +76,20 @@ public class SceneTrangition : MonoBehaviour
 
 
 
-    // ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Æ‚«‚ÉŒÄ‚Ño‚·ŠÖ”
+    // ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½ï¿½ÉŒÄ‚Ñoï¿½ï¿½ï¿½Öï¿½
     public void QuitGame()
     {
     #if UNITY_EDITOR
-            // UnityƒGƒfƒBƒ^ã‚ÅÀs’†‚Ìê‡‚ÍAÄ¶ƒ‚[ƒh‚ğI—¹‚·‚é
+            // Unityï¿½Gï¿½fï¿½Bï¿½^ï¿½ï¿½Åï¿½ï¿½sï¿½ï¿½ï¿½Ìê‡ï¿½ÍAï¿½Äï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             UnityEditor.EditorApplication.isPlaying = false;
     #else
-                // ÀÛ‚Éƒrƒ‹ƒh‚³‚ê‚½ƒQ[ƒ€‚Ìê‡‚ÍAƒAƒvƒŠ‚ğI—¹‚·‚é
+                // ï¿½ï¿½ï¿½Û‚Éƒrï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ê‚½ï¿½Qï¿½[ï¿½ï¿½ï¿½Ìê‡ï¿½ÍAï¿½Aï¿½vï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 Application.Quit();
     #endif
+    }
+
+    public void StartButton()
+    {
+        FadeManager.Instance.TriggerFadeAndLoadScene("MainScene");
     }
 }

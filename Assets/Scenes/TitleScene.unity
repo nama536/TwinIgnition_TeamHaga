@@ -476,10 +476,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1842462044}
-        m_TargetAssemblyTypeName: FadeManager, Assembly-CSharp
-        m_MethodName: TriggerFadeAndLoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 1725912218}
+        m_TargetAssemblyTypeName: SceneTrangition, Assembly-CSharp
+        m_MethodName: StartButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1842462042}
+      - m_Target: {fileID: 1725912218}
         m_TargetAssemblyTypeName: SceneTrangition, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -1174,28 +1174,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555982034}
   m_CullTransparentMesh: 1
---- !u!114 &1842462042 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3403411076300777836, guid: dab44697395b2d843b7eb7aff9af332a, type: 3}
-  m_PrefabInstance: {fileID: 4911858338388726328}
+--- !u!1 &1725912217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1725912219}
+  - component: {fileID: 1725912218}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1725912218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725912217}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c252b66c39908843bb8f8c49ef9effa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTrangition
---- !u!114 &1842462044 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1827772360304551131, guid: dab44697395b2d843b7eb7aff9af332a, type: 3}
-  m_PrefabInstance: {fileID: 4911858338388726328}
+--- !u!4 &1725912219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae6dad6548e95c4469f867fbec22143f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FadeManager
+  m_GameObject: {fileID: 1725912217}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1860552231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1466,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1458,3 +1481,4 @@ SceneRoots:
   - {fileID: 1170301010}
   - {fileID: 4911858338388726328}
   - {fileID: 1332728638}
+  - {fileID: 1725912219}

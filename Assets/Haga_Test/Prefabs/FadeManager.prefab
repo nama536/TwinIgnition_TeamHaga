@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7034475423204492985}
-  - component: {fileID: 3403411076300777836}
   - component: {fileID: 1827772360304551131}
   m_Layer: 0
   m_Name: FadeManager
@@ -34,18 +33,6 @@ Transform:
   - {fileID: 6086736656997106901}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3403411076300777836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339141627686374054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c252b66c39908843bb8f8c49ef9effa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneTrangition
 --- !u!114 &1827772360304551131
 MonoBehaviour:
   m_ObjectHideFlags: 0
