@@ -16,6 +16,20 @@ public class RoleSelectInput : MonoBehaviour
 
     [HideInInspector] public RoleSelectManager RoleSelectManager;
 
+    InputAction select;
+    InputAction confirm;
+    InputAction cancel;
+
+    public void Start(){
+        select = PlayerInput.actions.FindActionMap("Select").FindAction("Select");
+        confirm = PlayerInput.actions.FindActionMap("Select").FindAction("Confirm");
+        cancel = PlayerInput.actions.FindActionMap("Select").FindAction("Cancel");
+
+        select.performed += Select;
+        confirm.performed += Confirm;
+        cancel.performed += Cancel;
+    }
+
 
     /// <summary>
     /// 役職選択
